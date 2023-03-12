@@ -2,7 +2,7 @@
 object detection using pytorch vision
 
 ## Input Data
-image + csv
+Input data: image + csv </br>
 csv must be following format
 
 |filename   |width  |height |class  |xmin   |ymin   |xmax   |ymax   |
