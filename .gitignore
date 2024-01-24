@@ -1,7 +1,9 @@
 ._*
 .ipynb_checkpoints
 trained_model/
-
+.ipynb*
+wandb/
+.amlignore*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

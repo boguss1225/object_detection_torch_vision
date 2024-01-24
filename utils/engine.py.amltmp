@@ -58,19 +58,19 @@ def train_one_epoch(model, optimizer, data_loader, device, epoch, print_freq, sc
         metric_logger.update(loss=losses_reduced, **loss_dict_reduced)
         metric_logger.update(lr=optimizer.param_groups[0]["lr"])
 
-    # lr_f = float(str(metric_logger.meters['lr']).split()[0])
-    # loss_f = float(str(metric_logger.meters['loss']).split()[0])
-    # loss_classifier_f = float(str(metric_logger.meters['loss_classifier']).split()[0])
-    # loss_box_reg_f = float(str(metric_logger.meters['loss_box_reg']).split()[0])
-    # loss_objectness_f = float(str(metric_logger.meters['loss_objectness']).split()[0])
-    # loss_rpn_box_reg_f = float(str(metric_logger.meters['loss_rpn_box_reg']).split()[0])
+    lr_f = float(str(metric_logger.meters['lr']).split()[0])
+    loss_f = float(str(metric_logger.meters['loss']).split()[0])
+    loss_classifier_f = float(str(metric_logger.meters['loss_classifier']).split()[0])
+    loss_box_reg_f = float(str(metric_logger.meters['loss_box_reg']).split()[0])
+    loss_objectness_f = float(str(metric_logger.meters['loss_objectness']).split()[0])
+    loss_rpn_box_reg_f = float(str(metric_logger.meters['loss_rpn_box_reg']).split()[0])
 
-    # wandb.log({"learning rate":lr_f,
-    #            "loss":loss_f,
-    #            "loss_classifier":loss_classifier_f,
-    #            "loss_box_reg_f":loss_box_reg_f,
-    #            "loss_objectness_f":loss_objectness_f,
-    #            "loss_rpn_box_reg_f":loss_rpn_box_reg_f})
+    wandb.log({"learning rate":lr_f,
+               "loss":loss_f,
+               "loss_classifier":loss_classifier_f,
+               "loss_box_reg_f":loss_box_reg_f,
+               "loss_objectness_f":loss_objectness_f,
+               "loss_rpn_box_reg_f":loss_rpn_box_reg_f})
     
     return metric_logger
 
@@ -127,6 +127,5 @@ def evaluate(model, data_loader, device):
     coco_evaluator.accumulate()
     coco_evaluator.summarize()
     torch.set_num_threads(n_threads)
-    return coco_evaluator
-
-    # return eval_result
+    # return coco_evaluator
+    return 

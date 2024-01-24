@@ -24,6 +24,7 @@ class CocoEvaluator:
 
         self.img_ids = []
         self.eval_imgs = {k: [] for k in iou_types}
+        self.eval_result = {}
 
     def update(self, predictions):
         img_ids = list(np.unique(list(predictions.keys())))
@@ -54,6 +55,7 @@ class CocoEvaluator:
         for iou_type, coco_eval in self.coco_eval.items():
             print(f"IoU metric: {iou_type}")
             coco_eval.summarize()
+        self.eval_result = coco_eval.eval_result
 
     def prepare(self, predictions, iou_type):
         if iou_type == "bbox":
